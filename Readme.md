@@ -1,6 +1,6 @@
 Main script: "Spray-Passwords.ps1"
 
-PowerShell PoC script to perform password spraying attacks against user accounts in Active Directory (AD), aka low and slow online brute force method.
+PoC PowerShell script to demo how to perform password spraying attacks against user accounts in Active Directory (AD), aka low and slow online brute force method.
 
 Only use for good and after written approval from AD owner.
 
