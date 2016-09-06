@@ -14,10 +14,11 @@
   .NOTES
     Authored by    : Jakob H. Heidelberg / @JakobHeidelberg / www.improsec.com
     Date created   : 25/06-2016
-    Last modified  : 26/06-2016
+    Last modified  : 06/09-2016
 
     Version history:
     - 1.00: Initial public release, 26/06-2016
+    - 1.10: Fixed badpwdcount ldap filter, 06/09-2016
 #>
 
 [CmdletBinding()]
@@ -46,8 +47,8 @@ $SearcherBad.PropertiesToLoad.Add("samaccountname") > $Null
 $SearcherBad.PropertiesToLoad.Add("badpwdcount") > $Null
 $SearcherBad.PropertiesToLoad.Add("badpasswordtime") > $Null
 
-# Search for enabled users that have badpwdcount > 0
-$SearcherBad.filter="(&(samAccountType=805306368)(!(badpwdcount=0))(!(userAccountControl:1.2.840.113556.1.4.803:=2)))"
+# Search for enabled users that have badpwdcount >=1
+$SearcherBad.filter="(&(samAccountType=805306368)(badpwdcount>=1)(!(userAccountControl:1.2.840.113556.1.4.803:=2)))"
 $SearcherBad.PageSize = 1000
 
 #Get all users
