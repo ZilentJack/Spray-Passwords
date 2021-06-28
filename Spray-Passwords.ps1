@@ -287,7 +287,7 @@ Function BruteForce
                 {
                     # Put object values into variables
                     $samaccountnname = $userObj[$i].Properties.samaccountname
-                    $badpwdcount = $userObj[$i].Properties.badpwdcount
+                    $badpwdcount = $userObj[$i].Properties.badpwdcount[0]
                     $badpwdtime = $userObj[$i].Properties.badpasswordtime[0]
                     
                     # Not yet reached lockout tries
